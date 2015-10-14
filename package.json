@@ -1,0 +1,28 @@
+{
+  "name": "fis3-postpackager-open",
+  "version": "0.0.1",
+  "description": "fis3 plugin to open url in default brower ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/femxd/fis3-postpackager-open.git"
+  },
+  "keywords": [
+    "fis3",
+    "plugin",
+    "open",
+    "brower"
+  ],
+  "author": "allanyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/femxd/fis3-postpackager-open/issues"
+  },
+  "homepage": "https://github.com/femxd/fis3-postpackager-open#readme",
+  "dependencies": {
+    "open": "0.0.5"
+  }
+}
