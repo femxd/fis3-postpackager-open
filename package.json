@@ -1,6 +1,6 @@
 {
   "name": "fis3-postpackager-open",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "fis3 plugin to open url in default brower ",
   "main": "index.js",
   "scripts": {

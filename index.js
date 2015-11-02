@@ -19,7 +19,11 @@ module.exports = function(ret, conf, settings, opt) {
     });
 
     if (!hasListHtml) {
-        var firstFile = ret.src[fis.util.keys(ret.src)[0]];
-        open(baseUrl + firstFile.release);
+        fis.util.map(ret.src, function(subpath, file) {
+            if (file.isHtmlLike) {
+                open(baseUrl + file.release);
+                hasListHtml = true;
+            }
+        });
     }
 };
