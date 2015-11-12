@@ -1,6 +1,6 @@
 var open = require("open");
 
-module.exports = function(ret, conf, settings, opt) {
+module.exports = function (ret, conf, settings, opt) {
     var options = fis.get("options") && fis.get("options")._;
     if (!~options.indexOf("open")) {
         return false;
@@ -10,20 +10,24 @@ module.exports = function(ret, conf, settings, opt) {
         fis.log.error("fis3-postpackager-open require baseUrl settings!");
         return false;
     }
-    var hasListHtml = false;
-    fis.util.map(ret.src, function(subpath, file) {
-        if (file.isHtmlLike && file.basename === 'list.html') {
-            open(baseUrl + file.release);
-            hasListHtml = true;
+    var htmlFound = null;
+    fis.util.map(ret.src, function (subpath, file) {
+        if (!htmlFound && file.isHtmlLike && file.basename === 'list.html') {
+            htmlFound = baseUrl + file.release;
         }
     });
 
-    if (!hasListHtml) {
-        fis.util.map(ret.src, function(subpath, file) {
-            if (file.isHtmlLike) {
-                open(baseUrl + file.release);
-                hasListHtml = true;
+    if (!htmlFound) {
+        fis.util.map(ret.src, function (subpath, file) {
+            if (file.isHtmlLike && !htmlFound) {
+                htmlFound = baseUrl + file.release;
             }
         });
+    }
+
+    if (htmlFound) {
+        open(htmlFound);
+    } else {
+        fis.log.error("NOT found any html files!");
     }
 };
